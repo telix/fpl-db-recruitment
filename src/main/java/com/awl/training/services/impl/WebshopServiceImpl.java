@@ -61,4 +61,13 @@ public class WebshopServiceImpl implements WebshopService {
 		return basketService.addItemToBasket(sessionId, product, quantity);
 	}
 
+	@Override
+	public void removeItemToBasket(String sessionId, long productId) throws IllegalArgumentException {
+		Product product = productService.getProduct(productId);
+		if (product == null) {
+			throw new IllegalArgumentException("The product [" + productId + "] does not exist");
+		}
+		basketService.removeItemFromBasket(sessionId, product);
+	}
+
 }

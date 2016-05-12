@@ -53,4 +53,20 @@ public class BasketServiceImpl implements BasketService {
 
 		return "The Item  [" + product.getId() + "] has been successfully added in basket [" + sessionId + "]";
 	}
+
+	@Override
+	public void removeItemFromBasket(String sessionId, Product product) throws IllegalArgumentException {
+		if(product == null){
+			throw new IllegalArgumentException("The product is null");
+		}
+		// Retrieve the basket
+		Basket basket = getBasket(sessionId);
+
+		// Create an item
+		OrderItem item = basket.getItemFromBasket(product);
+		if( item != null ){
+			basket.getItems().remove(item);
+		}
+
+	}
 }

@@ -63,4 +63,16 @@ public interface WebshopService {
 	 */
 	String addItemToBasket(String sessionId, long productId, int quantity) throws IllegalArgumentException;
 
+	/**
+	 * Remove an item from a basket.
+	 *
+	 * @param sessionId
+	 *            the session id
+	 * @param productId
+	 *            the product id
+	 * @throws IllegalArgumentException
+	 *             the illegal argument exception
+	 */
+	void removeItemToBasket(String sessionId, long productId) throws IllegalArgumentException;
+
 }

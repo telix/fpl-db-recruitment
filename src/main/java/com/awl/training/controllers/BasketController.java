@@ -41,4 +41,17 @@ public class BasketController {
 		}
 
 	}
+
+	@RequestMapping(value = "/remove", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<?> addItemToBasket(@RequestParam(name = "sessionId") String sessionId, @RequestParam(name = "productId") long productId) {
+
+		try {
+			webshopService.removeItemToBasket(sessionId, productId);
+			return ResponseEntity.ok().body("Product is removed");
+		} catch (IllegalArgumentException e) {
+			logger.error("Error during remove product [" + productId + "] from basket [" + sessionId + "]", e);
+			return ResponseEntity.unprocessableEntity().body(e.getMessage());
+		}
+
+	}
 }

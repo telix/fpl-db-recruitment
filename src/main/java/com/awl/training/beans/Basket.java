@@ -27,4 +27,14 @@ public class Basket implements Serializable {
         return items;
     }
 
+    public OrderItem getItemFromBasket (Product product){
+        for (OrderItem item : getItems()) {
+            if(item.getProduct() == product){
+                return item;
+            }
+        }
+
+        return null;
+    }
+
 }

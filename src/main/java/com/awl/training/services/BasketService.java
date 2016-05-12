@@ -32,4 +32,17 @@ public interface BasketService {
 	 *             the illegal argument exception
 	 */
 	String addItemToBasket(String sessionId, Product product, int quantity) throws IllegalArgumentException;
+
+
+	/**
+	 * Remove an item from basket.
+	 *
+	 * @param sessionId
+	 *            the session id
+	 * @param product
+	 *            the {@link Product}
+	 * @throws IllegalArgumentException
+	 *             the illegal argument exception
+	 */
+	void removeItemFromBasket (String sessionId, Product product) throws IllegalArgumentException;
 }
