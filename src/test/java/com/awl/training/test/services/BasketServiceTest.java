@@ -59,4 +59,16 @@ public class BasketServiceTest {
 			Assert.notNull(e);
 		}
 	}
+
+	@Test
+	public void testAddItemQtyBiggerThanStock() {
+		Product product = Mockito.mock(Product.class);
+		Mockito.when(product.getId()).thenReturn(1L);
+
+		try {
+			basketService.addItemToBasket(SESSION_ID, product, (int) (product.getStock() + 1));
+		} catch (IllegalArgumentException e) {
+			Assert.notNull(e);
+		}
+	}
 }
