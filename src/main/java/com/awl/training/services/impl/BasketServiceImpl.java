@@ -47,6 +47,9 @@ public class BasketServiceImpl implements BasketService {
 
 		// Create Item
 		OrderItem item = new OrderItem(quantity, product);
+		if(quantity > product.getStock()){
+			throw new IllegalArgumentException("The quantity is bigger than the stock");
+		}
 
 		// Add item to the basket
 		basket.getItems().add(item);
